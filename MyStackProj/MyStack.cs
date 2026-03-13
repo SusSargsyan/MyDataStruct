@@ -1,28 +1,46 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using MyLinkedListProj; 
 
-namespace MyLinkedListLibrary;
-
-public class MyStack<T> : IEnumerable<T>
+namespace MyLinkedListLibrary
 {
-    private MyLinkedList<T> _list = new MyLinkedList<T>();
-
-    public void Push(T value) => _list.AddFirst(value);
-    public T Pop()
+    public class MyStack<T> : IEnumerable<T>
     {
-        T val = _list.GetFirst();
-        _list.RemoveFirst();
-        return val;
-    }
-    public T Peek() => _list.GetFirst();
-    public bool IsEmpty() => _list.Count == 0;
+     
+        private MyLinkedList<T> _list = new MyLinkedList<T>();
 
-    public IEnumerator<T> GetEnumerator()
-    {
-        return _list.GetEnumerator();
-    }
+        public void Push(T value) => _list.AddFirst(value);
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        throw new NotImplementedException();
+        public T Pop()
+        {
+            if (_list.Count == 0)
+                throw new InvalidOperationException("Stack is empty");
+
+         
+            T val = _list.Head.Value;
+            _list.RemoveFirst();
+            return val;
+        }
+
+        public T Peek()
+        {
+            if (_list.Count == 0)
+                throw new InvalidOperationException("Stack is empty");
+
+            return _list.Head.Value;
+        }
+
+        public bool IsEmpty() => _list.Count == 0;
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return _list.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

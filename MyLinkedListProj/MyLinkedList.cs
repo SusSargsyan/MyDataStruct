@@ -1,111 +1,145 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
-namespace MyLinkedListLibrary
+namespace MyLinkedListProj
 {
-    public class MyLinkedList<T>
+    public class MyLinkedList<T> : ICollection<T>
     {
-        private MyLinkedListNode<T> head;
+      
+        public MyLinkedListNode<T>? Head { get; private set; }
+        public MyLinkedListNode<T>? Tail { get; private set; }
         public int Count { get; private set; }
+        public bool IsReadOnly => false;
 
+        public MyLinkedList() { }
+
+        #region Add Methods
 
         public void AddFirst(T value)
         {
             var newNode = new MyLinkedListNode<T>(value);
-            newNode.Next = head;
-            head = newNode;
+            if (Head == null)
+            {
+                Head = Tail = newNode;
+            }
+            else
+            {
+                newNode.Next = Head;
+                Head = newNode;
+            }
             Count++;
         }
-
 
         public void AddLast(T value)
         {
             var newNode = new MyLinkedListNode<T>(value);
-            if (head == null)
+            if (Head == null)
             {
-                head = newNode;
+                Head = Tail = newNode;
             }
             else
             {
-                var current = head;
-                while (current.Next != null)
+            
+                if (Tail != null)
                 {
-                    current = current.Next;
+                    Tail.Next = newNode;
                 }
-                current.Next = newNode;
+                Tail = newNode;
             }
             Count++;
         }
 
+        #endregion
+
+        #region Remove Methods
 
         public void RemoveFirst()
         {
-            if (head == null) return;
-            head = head.Next;
-            Count--;
-        }
+            if (Head == null) return;
 
+            Head = Head.Next;
+            Count--;
+
+            if (Count == 0)
+            {
+                Tail = null;
+            }
+        }
 
         public void RemoveLast()
         {
-            if (head == null) return;
-            if (head.Next == null)
+            if (Head == null) return;
+
+            if (Head == Tail)
             {
-                head = null;
+                Head = Tail = null;
             }
             else
             {
-                var current = head;
-                while (current.Next.Next != null)
+                var temp = Head;
+            
+                while (temp != null && temp.Next != Tail)
                 {
-                    current = current.Next;
+                    temp = temp.Next;
                 }
-                current.Next = null;
+
+                if (temp != null)
+                {
+                    temp.Next = null;
+                    Tail = temp;
+                }
             }
             Count--;
         }
 
+        #endregion
+
+        #region Helpers & Enumerator
+
+        public void Add(T item) => AddLast(item);
 
         public void Clear()
         {
-            head = null;
+            Head = Tail = null;
             Count = 0;
         }
 
-
-        public bool Contains(T value)
+        public bool Contains(T item)
         {
-            var current = head;
+            var current = Head;
             while (current != null)
             {
-                if (current.Value.Equals(value)) return true;
+                if (current.Value != null && current.Value.Equals(item)) return true;
                 current = current.Next;
             }
             return false;
         }
 
+        public bool Remove(T item) => throw new NotImplementedException();
 
-        public override bool Equals(object obj)
+        public void CopyTo(T[] array, int arrayIndex)
         {
-            if (obj is MyLinkedList<T> other)
+            var current = Head;
+            while (current != null)
             {
-                if (this.Count != other.Count) return false;
-
-                var currentThis = this.head;
-                var currentOther = other.head;
-
-                while (currentThis != null)
-                {
-                    if (!currentThis.Value.Equals(currentOther.Value)) return false;
-                    currentThis = currentThis.Next;
-                    currentOther = currentOther.Next;
-                }
-                return true;
+                array[arrayIndex++] = current.Value;
+                current = current.Next;
             }
-            return false;
         }
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            var current = Head;
+            while (current != null)
+            {
+                yield return current.Value;
+                current = current.Next;
+            }
+        }
 
-        public T GetFirst() => head != null ? head.Value : throw new Exception("List is empty");
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        #endregion
     }
 }
-

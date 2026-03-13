@@ -1,13 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33627.172
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11605.240
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLinkedListProj", "MyLinkedListProj\MyLinkedListProj.csproj", "{6F45CD86-D092-4CC6-AF28-38EE1B5E640E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStackProj", "MyStackProj\MyStackProj.csproj", "{D1A1B794-C8EF-41D0-B6A2-35FD56EDD75A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyQueueProj", "MyQueueProj\MyQueueProj.csproj", "{3DA660E0-9323-48AE-B9B4-617EAA1103E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryTreeProj", "BinaryTreeProj\BinaryTreeProj.csproj", "{17D53831-8DAD-4319-981C-DA341A4207B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRunner", "MyRunner\MyRunner.csproj", "{20C90A9F-016F-422B-AE5C-703825DA987B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStackArrayProj", "MyStackArrayProj\MyStackArrayProj.csproj", "{0D6C7745-9509-4B24-A4CE-AC9741FF5270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostfixCalculator", "PostfixCalculator\PostfixCalculator.csproj", "{B8FD6996-C9E2-47C0-8E8F-66C9D631D118}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +35,22 @@ Global
 		{3DA660E0-9323-48AE-B9B4-617EAA1103E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DA660E0-9323-48AE-B9B4-617EAA1103E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DA660E0-9323-48AE-B9B4-617EAA1103E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17D53831-8DAD-4319-981C-DA341A4207B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17D53831-8DAD-4319-981C-DA341A4207B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17D53831-8DAD-4319-981C-DA341A4207B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17D53831-8DAD-4319-981C-DA341A4207B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C90A9F-016F-422B-AE5C-703825DA987B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C90A9F-016F-422B-AE5C-703825DA987B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C90A9F-016F-422B-AE5C-703825DA987B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C90A9F-016F-422B-AE5C-703825DA987B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D6C7745-9509-4B24-A4CE-AC9741FF5270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D6C7745-9509-4B24-A4CE-AC9741FF5270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D6C7745-9509-4B24-A4CE-AC9741FF5270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D6C7745-9509-4B24-A4CE-AC9741FF5270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8FD6996-C9E2-47C0-8E8F-66C9D631D118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8FD6996-C9E2-47C0-8E8F-66C9D631D118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8FD6996-C9E2-47C0-8E8F-66C9D631D118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8FD6996-C9E2-47C0-8E8F-66C9D631D118}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

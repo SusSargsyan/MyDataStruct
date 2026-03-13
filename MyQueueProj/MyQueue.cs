@@ -1,44 +1,42 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using MyLinkedListProj; 
 
-public class Queue<T> : IEnumerable<T>
+namespace MyQueueProj
 {
-    LinkedList<T> _items = new LinkedList<T>();
-
-    public void Enqueue(T item)
+    public class MyQueue<T> : IEnumerable<T>
     {
-        _items.AddLast(item);
-    }
+       
+        private MyLinkedList<T> _items = new MyLinkedList<T>();
 
-    public T Dequeue()
-    {
-        T value = _items.First.Value;
-        _items.RemoveFirst();
-        return value;
-    }
+        public void Enqueue(T value)
+        {
+            _items.AddLast(value);
+        }
 
-    public T Peek()
-    {
-        return _items.First.Value;
-    }
+        public T Dequeue()
+        {
+            if (_items.Count == 0) return default(T);
 
-    public int Count
-    {
-        get { return _items.Count; }
-    }
+          
+            T value = _items.Head.Value;
+            _items.RemoveFirst();
+            return value;
+        }
 
-    public void Clear()
-    {
-        _items.Clear();
-    }
+        public T Peek()
+        {
+            if (_items.Head == null) return default(T);
+            return _items.Head.Value;
+        }
 
-    public IEnumerator<T> GetEnumerator()
-    {
-        return _items.GetEnumerator();
-    }
+        public int Count => _items.Count;
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
+        public void Clear() => _items.Clear();
+
+        public IEnumerator<T> GetEnumerator() => _items.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
