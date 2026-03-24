@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BinaryTreeProj\BinaryTreeProj.csproj" />
+    <ProjectReference Include="..\MyHashTableAlgorithms\MyHashTableAlgorithms.csproj" />
     <ProjectReference Include="..\MyLinkedListProj\MyLinkedListProj.csproj" />
     <ProjectReference Include="..\MyQueueProj\MyQueueProj.csproj" />
     <ProjectReference Include="..\MyStackArrayProj\MyStackArrayProj.csproj" />

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStackArrayProj", "MyStack
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostfixCalculator", "PostfixCalculator\PostfixCalculator.csproj", "{B8FD6996-C9E2-47C0-8E8F-66C9D631D118}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHashTableAlgorithms", "MyHashTableAlgorithms\MyHashTableAlgorithms.csproj", "{D19F7174-83F8-4127-B21A-AFEA452A0A83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{B8FD6996-C9E2-47C0-8E8F-66C9D631D118}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8FD6996-C9E2-47C0-8E8F-66C9D631D118}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8FD6996-C9E2-47C0-8E8F-66C9D631D118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D19F7174-83F8-4127-B21A-AFEA452A0A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19F7174-83F8-4127-B21A-AFEA452A0A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D19F7174-83F8-4127-B21A-AFEA452A0A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D19F7174-83F8-4127-B21A-AFEA452A0A83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
