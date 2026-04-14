@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostfixCalculator", "Postfi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHashTableAlgorithms", "MyHashTableAlgorithms\MyHashTableAlgorithms.csproj", "{D19F7174-83F8-4127-B21A-AFEA452A0A83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPriorityQueue", "MyPriorityQueue\MyPriorityQueue.csproj", "{746A3D37-92B9-40A0-93A7-099F936E7ACA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySet", "MySet\MySet.csproj", "{30752990-BFFD-4AA3-8397-A37D5D594E34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{D19F7174-83F8-4127-B21A-AFEA452A0A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D19F7174-83F8-4127-B21A-AFEA452A0A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D19F7174-83F8-4127-B21A-AFEA452A0A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{746A3D37-92B9-40A0-93A7-099F936E7ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{746A3D37-92B9-40A0-93A7-099F936E7ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{746A3D37-92B9-40A0-93A7-099F936E7ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{746A3D37-92B9-40A0-93A7-099F936E7ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30752990-BFFD-4AA3-8397-A37D5D594E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30752990-BFFD-4AA3-8397-A37D5D594E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30752990-BFFD-4AA3-8397-A37D5D594E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30752990-BFFD-4AA3-8397-A37D5D594E34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,7 +14,7 @@ public class Program
         }
     }
 
-    private static int AdditiveHash(string input)
+    public static int AdditiveHash(string input)
     {
         int currentHash = 0;
         foreach (char c in input)
@@ -27,7 +27,7 @@ public class Program
         return currentHash;
     }
 
-    private static int FoldingHash(string input)
+    public static int FoldingHash(string input)
     {
         int hashValue = 0;
 
@@ -47,7 +47,7 @@ public class Program
         return hashValue;
     }
 
-    private static int GetNextBytes(int startIndex, string str)
+    public static int GetNextBytes(int startIndex, string str)
     {
         int currentFourBytes = 0;
 
@@ -59,7 +59,7 @@ public class Program
         return currentFourBytes;
     }
 
-    private static int GetByte(string str, int index)
+    public static int GetByte(string str, int index)
     {
         if (index < str.Length)
         {

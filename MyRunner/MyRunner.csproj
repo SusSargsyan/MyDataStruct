@@ -11,7 +11,9 @@
     <ProjectReference Include="..\BinaryTreeProj\BinaryTreeProj.csproj" />
     <ProjectReference Include="..\MyHashTableAlgorithms\MyHashTableAlgorithms.csproj" />
     <ProjectReference Include="..\MyLinkedListProj\MyLinkedListProj.csproj" />
+    <ProjectReference Include="..\MyPriorityQueue\MyPriorityQueue.csproj" />
     <ProjectReference Include="..\MyQueueProj\MyQueueProj.csproj" />
+    <ProjectReference Include="..\MySet\MySet.csproj" />
     <ProjectReference Include="..\MyStackArrayProj\MyStackArrayProj.csproj" />
     <ProjectReference Include="..\MyStackProj\MyStackProj.csproj" />
     <ProjectReference Include="..\PostfixCalculator\PostfixCalculator.csproj" />

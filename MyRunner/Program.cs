@@ -3,6 +3,7 @@ using MyHashTableAlgorithms;
 using MyLinkedListProj;
 using MyQueueProj;
 using MyStackProj;
+using MyPriorityQueue;
 using System;
 using System.Collections;
 
@@ -97,6 +98,68 @@ namespace MyRunner
             Console.WriteLine("\n===============================");
             Console.WriteLine("Բոլոր թեստերը (ներառյալ Hash Table) հաջողությամբ անցան:");
             Console.ReadLine();
+
+            // --- 5. PRIORITY QUEUE ՍՏՈՒԳՈՒՄ ---
+            Console.WriteLine("===== 5. Priority Queue Test (Descending) =====");
+ 
+            MyPriorityQueue.PriorityQueue<int> pQueue = new MyPriorityQueue.PriorityQueue<int>();
+
+            pQueue.Enqueue(10);
+            pQueue.Enqueue(50);
+            pQueue.Enqueue(20);
+            pQueue.Enqueue(40);
+
+            Console.WriteLine("Տարրերը ըստ առաջնահերթության (բարձրից ցածր):");
+            foreach (var item in pQueue)
+            {
+                Console.Write($"[{item}] ");
+            }
+            Console.WriteLine();
+
+            Console.WriteLine($"Peek (ամենաբարձրը): {pQueue.Peek()}"); // Պետք է լինի 50
+            Console.WriteLine($"Dequeue (սպասարկվում է): {pQueue.Dequeue()}"); // Հեռացնում է 50-ը
+            Console.WriteLine($"Հաջորդը Dequeue-ից հետո: {pQueue.Peek()}"); // Պետք է լինի 40
+
+            Console.WriteLine();
+
+            // --- 6. SET (ԲԱԶՄՈՒԹՅՈՒՆ) ՍՏՈՒԳՈՒՄ ---
+            Console.WriteLine("===== 6. Set (Բազմություն) Test =====");
+
+            MySet.MySet.Set<int> setA = new MySet.MySet.Set<int>();
+            setA.AddRange(new int[] { 1, 2, 3, 4 });
+
+            MySet.MySet.Set<int> setB = new MySet.MySet.Set<int>();
+            setB.AddRange(new int[] { 3, 4, 5, 6 });
+
+            Console.WriteLine("Բազմություն A: " + string.Join(", ", setA));
+            Console.WriteLine("Բազմություն B: " + string.Join(", ", setB));
+
+            // Միավորում (Union): 1, 2, 3, 4, 5, 6
+            var union = setA.Union(setB);
+            Console.WriteLine("Միավորում (Union): " + string.Join(", ", union));
+
+            // Հատում (Intersection): 3, 4
+            var intersection = setA.Intersection(setB);
+            Console.WriteLine("Հատում (Intersection): " + string.Join(", ", intersection));
+
+            // Տարբերություն (Difference): 1, 2
+            var difference = setA.Difference(setB);
+            Console.WriteLine("Տարբերություն (A - B): " + string.Join(", ", difference));
+
+            // Սիմետրիկ տարբերություն (Symmetric Difference): 1, 2, 5, 6
+            var symDiff = setA.SymmetricDifference(setB);
+            Console.WriteLine("Սիմետրիկ տարբերություն: " + string.Join(", ", symDiff));
+
+            // Սխալի ստուգում (կրկնվող տարր)
+            try
+            {
+                setA.Add(1);
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine("\nՍտուգում: Չի կարելի ավելացնել նույն տարրը երկրորդ անգամ: " + ex.Message);
+            }
+            Console.WriteLine();
         }
     }
 }
