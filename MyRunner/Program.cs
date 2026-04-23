@@ -125,10 +125,10 @@ namespace MyRunner
             // --- 6. SET (ԲԱԶՄՈՒԹՅՈՒՆ) ՍՏՈՒԳՈՒՄ ---
             Console.WriteLine("===== 6. Set (Բազմություն) Test =====");
 
-            MySet.MySet.Set<int> setA = new MySet.MySet.Set<int>();
+            MySet.MySet<int> setA = new MySet.MySet<int>();
             setA.AddRange(new int[] { 1, 2, 3, 4 });
 
-            MySet.MySet.Set<int> setB = new MySet.MySet.Set<int>();
+            MySet.MySet<int> setB = new MySet.MySet<int>();
             setB.AddRange(new int[] { 3, 4, 5, 6 });
 
             Console.WriteLine("Բազմություն A: " + string.Join(", ", setA));
