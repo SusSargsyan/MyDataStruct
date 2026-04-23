@@ -53,7 +53,7 @@ namespace WpfApp1
 
             InitializeComponent();
         }
-            private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             foreach (string name in allSets.Keys)
             {

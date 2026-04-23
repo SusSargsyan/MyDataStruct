@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Button Content="Button" HorizontalAlignment="Left" Margin="682,42,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="leftSet" HorizontalAlignment="Left" Margin="503,35,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.933,3.228"/>
