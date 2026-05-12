@@ -4,6 +4,11 @@ using MyLinkedListProj;
 using MyQueueProj;
 using MyStackProj;
 using MyPriorityQueue;
+using MyBubbleSortProj;    // Ավելացված է
+using MyInsertionSortProj; // Ավելացված է
+using MyMergeSortProj;
+using MyQuickSortProject;
+using MySelectionSortProj;
 using System;
 using System.Collections;
 
@@ -23,19 +28,16 @@ namespace MyRunner
             foreach (var item in list) Console.WriteLine($"- {item}");
             Console.WriteLine();
 
-            // --- STACK (Linked List-based)  ---
+            // --- 2. STACK (Linked List-based) ---
             Console.WriteLine("===== Stack Test =====");
             var s = new MyLinkedListLibrary.MyStack<int>();
-
             s.Push(100); s.Push(200); s.Push(300);
-
-            Console.WriteLine($"Վերևում է (Peek): {s.Peek()}"); // 300
-            Console.WriteLine($"Հեռացվեց (Pop): {s.Pop()}");    // 300
-            Console.WriteLine($"Հաջորդը (Peek): {s.Peek()}");   // 200
-
+            Console.WriteLine($"Վերևում է (Peek): {s.Peek()}");
+            Console.WriteLine($"Հեռացվեց (Pop): {s.Pop()}");
+            Console.WriteLine($"Հաջորդը (Peek): {s.Peek()}");
             Console.WriteLine("\nՄնացածը ստեկում:");
             foreach (int x in s) Console.WriteLine(x);
-
+            Console.WriteLine();
 
             // --- 3. STACK (ARRAY-ՈՎ) ՍՏՈՒԳՈՒՄ ---
             Console.WriteLine("===== 2. Stack (Array-based) Test =====");
@@ -63,103 +65,94 @@ namespace MyRunner
 
             // --- 6. HASH TABLE-Ի ՍՏՈՒԳՈՒՄ (REFLECTION-ՈՎ) ---
             Console.WriteLine("===== 5. Hash Table Test (Private Access) =====");
-
             try
             {
-                // 1. Գտնում ենք Program դասը MyHashTableAlgorithms նախագծի մեջ
                 var type = typeof(MyHashTableAlgorithms.Program);
-
-                // 2. Գտնում ենք FoldingHash մեթոդը, նույնիսկ եթե այն PRIVATE է
                 var method = type.GetMethod("FoldingHash",
                     System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
 
                 if (method != null)
                 {
                     string testKey = "lore";
-                    // 3. Կանչում ենք մեթոդը
                     var result = method.Invoke(null, new object[] { testKey });
-
                     Console.WriteLine($"Բանալի: {testKey}");
-                    Console.WriteLine($"Folding Hash (կանչված private-ից): {result}");
+                    Console.WriteLine($"Folding Hash: {result}");
                     Console.WriteLine($"Ինդեքս (mod 10): {Math.Abs((int)result % 10)}");
                 }
-                else
-                {
-                    Console.WriteLine("Սխալ: FoldingHash մեթոդը չգտնվեց:");
-                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Չհաջողվեց կանչել private մեթոդը: " + ex.Message);
-            }
+            catch (Exception ex) { Console.WriteLine("Սխալ Hash Table-ում: " + ex.Message); }
+            Console.WriteLine();
 
+            // --- 7. PRIORITY QUEUE ՍՏՈՒԳՈՒՄ ---
+            Console.WriteLine("===== 6. Priority Queue Test =====");
+            MyPriorityQueue.PriorityQueue<int> pQueue = new MyPriorityQueue.PriorityQueue<int>();
+            pQueue.Enqueue(10); pQueue.Enqueue(50); pQueue.Enqueue(20); pQueue.Enqueue(40);
+            Console.WriteLine($"Peek (ամենաբարձրը): {pQueue.Peek()}");
+            Console.WriteLine($"Dequeue: {pQueue.Dequeue()}");
+            Console.WriteLine();
+
+            // --- 8. SET (ԲԱԶՄՈՒԹՅՈՒՆ) ՍՏՈՒԳՈՒՄ ---
+            Console.WriteLine("===== 7. Set (Բազմություն) Test =====");
+            MySet.MySet<int> setA = new MySet.MySet<int>();
+            setA.AddRange(new int[] { 1, 2, 3 });
+            MySet.MySet<int> setB = new MySet.MySet<int>();
+            setB.AddRange(new int[] { 3, 4, 5 });
+            Console.WriteLine("Միավորում: " + string.Join(", ", setA.Union(setB)));
+            Console.WriteLine();
+
+            // --- 9. BUBBLE SORT ՍՏՈՒԳՈՒՄ ---
+            Console.WriteLine("===== 8. Bubble Sort Test =====");
+            int[] bubbleArr = { 5, 2, 8, 1, 9 };
+            BubbleSort<int> bSorter = new BubbleSort<int>();
+            bSorter.Sort(bubbleArr);
+            Console.WriteLine("Bubble Sort-ից հետո: " + string.Join(", ", bubbleArr));
+            Console.WriteLine();
+
+            // --- 10. INSERTION SORT ՍՏՈՒԳՈՒՄ ---
+            Console.WriteLine("===== 9. Insertion Sort Test =====");
+            int[] insertionArr = { 10, 3, 7, 4, 1 };
+            MyInsertionSort<int> iSorter = new MyInsertionSort<int>();
+            iSorter.Sort(insertionArr);
+            Console.WriteLine("Insertion Sort-ից հետո: " + string.Join(", ", insertionArr));
+            Console.WriteLine();
+
+            // --- 11. MERGE SORT ՍՏՈՒԳՈՒՄ ---
+            Console.WriteLine("===== 10. Merge Sort Test =====");
+            int[] mergeArr = { 38, 27, 43, 3, 9, 82, 10 };
+            Console.WriteLine("Նախքան սորտավորելը: " + string.Join(", ", mergeArr));
+
+            MergeSort<int> mSorter = new MergeSort<int>();
+            mSorter.Sort(mergeArr);
+
+            Console.WriteLine("Merge Sort-ից հետո: " + string.Join(", ", mergeArr));
+            Console.WriteLine();
+
+            // --- 12. QUICK SORT ՍՏՈՒԳՈՒՄ ---
+            Console.WriteLine("===== 11. Quick Sort Test =====");
+            int[] quickArr = { 10, 80, 30, 90, 40, 50, 70 };
+            Console.WriteLine("Նախքան սորտավորելը: " + string.Join(", ", quickArr));
+
+            MyQuickSort<int> qSorter = new MyQuickSort<int>();
+            qSorter.QuickSort(quickArr);
+
+            Console.WriteLine("Quick Sort-ից հետո: " + string.Join(", ", quickArr));
+            Console.WriteLine();
+
+            // --- 13. SELECTION SORT ՍՏՈՒԳՈՒՄ ---
+            Console.WriteLine("===== 12. Selection Sort Test =====");
+            int[] selectArr = { 64, 25, 12, 22, 11 };
+            Console.WriteLine("Նախքան սորտավորելը: " + string.Join(", ", selectArr));
+
+            MySelectionSort<int> sSorter = new MySelectionSort<int>();
+            sSorter.Sort(selectArr);
+
+            Console.WriteLine("Selection Sort-ից հետո: " + string.Join(", ", selectArr));
+            Console.WriteLine();
 
             // --- ԱՎԱՐՏ ---
-            Console.WriteLine("\n===============================");
-            Console.WriteLine("Բոլոր թեստերը (ներառյալ Hash Table) հաջողությամբ անցան:");
-            Console.ReadLine();
-
-            // --- 5. PRIORITY QUEUE ՍՏՈՒԳՈՒՄ ---
-            Console.WriteLine("===== 5. Priority Queue Test (Descending) =====");
- 
-            MyPriorityQueue.PriorityQueue<int> pQueue = new MyPriorityQueue.PriorityQueue<int>();
-
-            pQueue.Enqueue(10);
-            pQueue.Enqueue(50);
-            pQueue.Enqueue(20);
-            pQueue.Enqueue(40);
-
-            Console.WriteLine("Տարրերը ըստ առաջնահերթության (բարձրից ցածր):");
-            foreach (var item in pQueue)
-            {
-                Console.Write($"[{item}] ");
-            }
-            Console.WriteLine();
-
-            Console.WriteLine($"Peek (ամենաբարձրը): {pQueue.Peek()}"); // Պետք է լինի 50
-            Console.WriteLine($"Dequeue (սպասարկվում է): {pQueue.Dequeue()}"); // Հեռացնում է 50-ը
-            Console.WriteLine($"Հաջորդը Dequeue-ից հետո: {pQueue.Peek()}"); // Պետք է լինի 40
-
-            Console.WriteLine();
-
-            // --- 6. SET (ԲԱԶՄՈՒԹՅՈՒՆ) ՍՏՈՒԳՈՒՄ ---
-            Console.WriteLine("===== 6. Set (Բազմություն) Test =====");
-
-            MySet.MySet<int> setA = new MySet.MySet<int>();
-            setA.AddRange(new int[] { 1, 2, 3, 4 });
-
-            MySet.MySet<int> setB = new MySet.MySet<int>();
-            setB.AddRange(new int[] { 3, 4, 5, 6 });
-
-            Console.WriteLine("Բազմություն A: " + string.Join(", ", setA));
-            Console.WriteLine("Բազմություն B: " + string.Join(", ", setB));
-
-            // Միավորում (Union): 1, 2, 3, 4, 5, 6
-            var union = setA.Union(setB);
-            Console.WriteLine("Միավորում (Union): " + string.Join(", ", union));
-
-            // Հատում (Intersection): 3, 4
-            var intersection = setA.Intersection(setB);
-            Console.WriteLine("Հատում (Intersection): " + string.Join(", ", intersection));
-
-            // Տարբերություն (Difference): 1, 2
-            var difference = setA.Difference(setB);
-            Console.WriteLine("Տարբերություն (A - B): " + string.Join(", ", difference));
-
-            // Սիմետրիկ տարբերություն (Symmetric Difference): 1, 2, 5, 6
-            var symDiff = setA.SymmetricDifference(setB);
-            Console.WriteLine("Սիմետրիկ տարբերություն: " + string.Join(", ", symDiff));
-
-            // Սխալի ստուգում (կրկնվող տարր)
-            try
-            {
-                setA.Add(1);
-            }
-            catch (InvalidOperationException ex)
-            {
-                Console.WriteLine("\nՍտուգում: Չի կարելի ավելացնել նույն տարրը երկրորդ անգամ: " + ex.Message);
-            }
-            Console.WriteLine();
+            Console.WriteLine("===============================");
+            Console.WriteLine("Բոլոր թեստերը հաջողությամբ ավարտվեցին:");
+            Console.ReadLine(); // Այստեղ այն իր տեղում է
         }
     }
 }

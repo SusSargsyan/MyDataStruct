@@ -1,4 +1,4 @@
-﻿class Program
+﻿class MyChessProj
 {
     static void Main()
     {
