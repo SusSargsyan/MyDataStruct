@@ -1,23 +1,25 @@
-﻿class MyChessProj
+﻿class Program
 {
     static void Main()
     {
         int n = 8;
+        int[,] board = new int[9, 9];
+        board[4, 4] = 1;
 
         PrintMainDiagonal(n);
         Console.WriteLine("---------------------------");
-        Console.WriteLine();
         PrintSecondDiagonal(n);
         Console.WriteLine("---------------------------");
         Console.WriteLine(PrintCanRookMove(2, 3, 5, 3));
         Console.WriteLine("---------------------------");
         Console.WriteLine(PrintCanKnightMove(2, 3, 4, 4));
         Console.WriteLine("------------------------------");
-        int steps = GetKnightMinSteps(1, 1, 8, 8); 
-        Console.WriteLine("Dziu nvazaguyn qayleri qanaky: " + steps);
+        int steps = GetKnightMinSteps(1, 1, 8, 8);
+        Console.WriteLine("The minimum steps of horse is " + steps);
 
-
-
+        Console.WriteLine("------------------------------");
+        Console.WriteLine(CanBishopMove(2, 2, 5, 5));
+        Console.WriteLine(CanBishopMoveWithObstacles(2, 2, 5, 5, board));
 
         Console.ReadKey();
     }
@@ -28,14 +30,8 @@
         {
             for (int j = 0; j < MatrixSize; j++)
             {
-                if (i == j)
-                {
-                    Console.Write("# ");
-                }
-                else
-                {
-                    Console.Write("* ");
-                }
+                if (i == j) Console.Write("# ");
+                else Console.Write("* ");
             }
             Console.WriteLine();
         }
@@ -47,14 +43,8 @@
         {
             for (int j = 0; j < MatrixSize; j++)
             {
-                if (i + j == MatrixSize - 1)
-                {
-                    Console.Write("# ");
-                }
-                else
-                {
-                    Console.Write("* ");
-                }
+                if (i + j == MatrixSize - 1) Console.Write("# ");
+                else Console.Write("* ");
             }
             Console.WriteLine();
         }
@@ -62,56 +52,34 @@
 
     static bool PrintCanRookMove(int startRow, int startCol, int targetRow, int targetCol)
     {
-
-        if (startRow == targetRow && startCol == targetCol)
-        {
-            return false;
-        }
-
-        if (startRow == targetRow || startCol == targetCol)
-        {
-            return true;
-        }
-
-        return false;
+        if (startRow == targetRow && startCol == targetCol) return false;
+        return (startRow == targetRow || startCol == targetCol);
     }
 
     static bool PrintCanKnightMove(int startRow, int startCol, int targetRow, int targetCol)
     {
         int deltaRow = Math.Abs(startRow - targetRow);
         int deltaCol = Math.Abs(startCol - targetCol);
-
-        if ((deltaRow == 2 && deltaCol == 1) || (deltaRow == 1 && deltaCol == 2))
-        {
-            return true;
-        }
-
-        return false;
+        return (deltaRow == 2 && deltaCol == 1) || (deltaRow == 1 && deltaCol == 2);
     }
 
     static int GetKnightMinSteps(int startRow, int startCol, int targetRow, int targetCol)
     {
         int[] dx = { 2, 2, -2, -2, 1, 1, -1, -1 };
         int[] dy = { 1, -1, 1, -1, 2, -2, 2, -2 };
-
         Queue<(int, int, int)> queue = new Queue<(int, int, int)>();
         queue.Enqueue((startRow, startCol, 0));
-
-        bool[,] visited = new bool[9, 9]; 
+        bool[,] visited = new bool[9, 9];
         visited[startRow, startCol] = true;
 
         while (queue.Count > 0)
         {
             var (r, c, dist) = queue.Dequeue();
-
-            if (r == targetRow && c == targetCol)
-                return dist;
-
+            if (r == targetRow && c == targetCol) return dist;
             for (int i = 0; i < 8; i++)
             {
                 int nextR = r + dx[i];
                 int nextC = c + dy[i];
-
                 if (nextR >= 1 && nextR <= 8 && nextC >= 1 && nextC <= 8 && !visited[nextR, nextC])
                 {
                     visited[nextR, nextC] = true;
@@ -122,4 +90,30 @@
         return -1;
     }
 
+    static bool CanBishopMove(int startRow, int startCol, int targetRow, int targetCol)
+    {
+        if (startRow == targetRow && startCol == targetCol)
+            return false;
+
+        return Math.Abs(startRow - targetRow) == Math.Abs(startCol - targetCol);
+    }
+
+    static bool CanBishopMoveWithObstacles(int startRow, int startCol, int targetRow, int targetCol, int[,] board)
+    {
+        if (!CanBishopMove(startRow, startCol, targetRow, targetCol))
+            return false;
+        int rowStep = (targetRow > startRow) ? 1 : -1;
+        int colStep = (targetCol > startCol) ? 1 : -1;
+        int currentRow = startRow + rowStep;
+        int currentCol = startCol + colStep;
+
+        while (currentRow != targetRow && currentCol != targetCol)
+        {
+            if (board[currentRow, currentCol] != 0)
+                return false;
+            currentRow += rowStep;
+            currentCol += colStep;
+        }
+        return true;
+    }
 }
