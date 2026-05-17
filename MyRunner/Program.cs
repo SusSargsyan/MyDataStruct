@@ -63,24 +63,23 @@ namespace MyRunner
             Console.WriteLine($"Dequeue: {queue.Dequeue()}");
             Console.WriteLine();
 
-            // --- 6. HASH TABLE-Ի ՍՏՈՒԳՈՒՄ (REFLECTION-ՈՎ) ---
-            Console.WriteLine("===== 5. Hash Table Test (Private Access) =====");
+            // --- 6. HASH TABLE-Ի ՍՏՈՒԳՈՒՄ ---
+            Console.WriteLine("===== 5. Hash Table Test (Direct Access) =====");
             try
             {
-                var type = typeof(MyHashTableAlgorithms.Program);
-                var method = type.GetMethod("FoldingHash",
-                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+                string testKey = "lore";
 
-                if (method != null)
-                {
-                    string testKey = "lore";
-                    var result = method.Invoke(null, new object[] { testKey });
-                    Console.WriteLine($"Բանալի: {testKey}");
-                    Console.WriteLine($"Folding Hash: {result}");
-                    Console.WriteLine($"Ինդեքս (mod 10): {Math.Abs((int)result % 10)}");
-                }
+                // Ուղղակիորեն կանչում ենք մեթոդը Program դասի միջից
+                int result = MyHashTableAlgorithms.Program.FoldingHash(testKey);
+
+                Console.WriteLine($"Բանալի: {testKey}");
+                Console.WriteLine($"Folding Hash: {result}");
+                Console.WriteLine($"Ինդեքս (mod 10): {Math.Abs(result % 10)}");
             }
-            catch (Exception ex) { Console.WriteLine("Սխալ Hash Table-ում: " + ex.Message); }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Սխալ Hash Table-ում: " + ex.Message);
+            }
             Console.WriteLine();
 
             // --- 7. PRIORITY QUEUE ՍՏՈՒԳՈՒՄ ---
